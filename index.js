@@ -14,7 +14,7 @@ async function run() {
       const binariesPath = `${process.env.HOME}/.local/bin`;
       core.addPath(binariesPath);
       await io.mkdirP(binariesPath);
-      const dmenvBinPath = `${binariesPath}/dmenv'`;
+      const dmenvBinPath = `${binariesPath}/dmenv`;
       console.log(`cp ${dmenvDlPath} -> ${dmenvBinPath}`);
       await io.cp(dmenvDlPath, dmenvBinPath);
       await fs.chmod(dmenvBinPath, 0o775, (err) => {
@@ -23,7 +23,7 @@ async function run() {
         }
       });
       await exec.exec(dmenvBinPath, ["--version"]);
-      // await tc.cacheFile(dmenvBinPath, 'dmenv', 'dmenv', dmenvVersion);
+      await tc.cacheFile(dmenvBinPath, 'dmenv', 'dmenv', dmenvVersion);
     }
   } catch (error) {
     core.setFailed(error.message);
