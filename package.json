@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "implementation of dmenv GitHub actions",
   "main": "dist/index.js",
-  "keywords": ["github-actions"],
+  "keywords": [
+    "github-actions"
+  ],
   "author": "Dimitri Merejkowsky",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.0",
+    "@actions/exec": "^1.0.1",
+    "@actions/io": "^1.0.1",
+    "@actions/tool-cache": "^1.1.2"
   }
 }
