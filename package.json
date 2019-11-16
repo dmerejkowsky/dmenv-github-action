@@ -1,0 +1,12 @@
+{
+  "name": "dmenv-github-action",
+  "version": "1.0.0",
+  "description": "implementation of dmenv GitHub actions",
+  "main": "index.js",
+  "keywords": ["github-actions"],
+  "author": "Dimitri Merejkowsky",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.0"
+  }
+}
