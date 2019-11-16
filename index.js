@@ -23,7 +23,7 @@ async function run() {
         }
       });
       await exec.exec(dmenvBinPath, ["--version"]);
-      await tc.cacheFile(dmenvBinPath);
+      await tc.cacheFile(dmenvBinPath, 'dmenv', 'dmenv', dmenvVersion);
     }
   } catch (error) {
     core.setFailed(error.message);
