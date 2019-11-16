@@ -1,18 +1,12 @@
-# dmenv javascript action
+# Use dmenv in GitHub Actions
 
-This action install `dmenv` then runs `dmenv install`
+This action installs and configure [dmenv](https://github.com/tankerhq/dmenv) for use in your Python projects.
 
-## Inputs
+## Usage
 
-### dmenv-version
-
-**required**: the version of dmenv to use. See [
-https://github.com/TankerHQ/dmenv/releases](dmenv releases) for available values.
-
-## Exmaple usage
+See example below:
 
 ```yaml
-
 # Note: you *have* to call setup-python with a version >= 3.5
 # for the dmenv action to work
 - name: Set up Python
@@ -24,4 +18,16 @@ https://github.com/TankerHQ/dmenv/releases](dmenv releases) for available values
   uses: dmerejkowsy/dmenv-action@v1.0.0
   with:
     dmenv-version: 0.20.0
+    
+- name: Run tests
+  run: |
+     dmenv install
+     dmenv run pytest
 ```
+
+
+## Inputs
+
+### dmenv-version
+
+**required**: the version of dmenv to use. See [dmenv releases page](https://github.com/TankerHQ/dmenv/releases) for available values.
