@@ -2,7 +2,7 @@ name: dmenv
 author: Dimitri Merejkowsky
 description: Simplify usage of dmenv for CI of Python projects
 inputs:
-  dmenv_version:
+  dmenv-version:
     escription: "dmenv version"
     required: true
   run:
