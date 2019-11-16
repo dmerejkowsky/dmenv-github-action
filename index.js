@@ -1,34 +1,15 @@
-const fs = require('fs');
 const core = require('@actions/core');
-const tc = require('@actions/tool-cache');
-const io = require('@actions/io');
-const exec = require('@actions/exec');
+const github = require('@actions/github');
 
-async function run() {
-  try {
-    const dmenvVersion = core.getInput("dmenv-version");
-    console.log(`Installing dmenv version ${dmenvVersion}`);
-    // Todo: darwin, win32
-    if (process.platform === 'linux') {
-      const dmenvDlPath = await tc.downloadTool(`https://github.com/TankerHQ/dmenv/releases/download/v${dmenvVersion}/dmenv-linux`);
-      const binariesPath = `${process.env.HOME}/.local/bin`;
-      core.addPath(binariesPath);
-      await io.mkdirP(binariesPath);
-      const dmenvBinPath = `${binariesPath}/dmenv`;
-      console.log(`cp ${dmenvDlPath} -> ${dmenvBinPath}`);
-      await io.cp(dmenvDlPath, dmenvBinPath);
-      await fs.chmod(dmenvBinPath, 0o775, (err) => {
-        if (err) {
-          throw err;
-        }
-      });
-      await exec.exec(dmenvBinPath, ["--version"]);
-      //await tc.cacheFile(dmenvBinPath, 'dmenv', 'dmenv', dmenvVersion);
-    }
-  } catch (error) {
-    console.log('error', error);
-    core.setFailed(error.message);
-  }
+try {
+  // `who-to-greet` input defined in action metadata file
+  const nameToGreet = core.getInput('who-to-greet');
+  console.log(`Hello ${nameToGreet}!`);
+  const time = (new Date()).toTimeString();
+  core.setOutput("time", time);
+  // Get the JSON webhook payload for the event that triggered the workflow
+  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  console.log(`The event payload: ${payload}`);
+} catch (error) {
+  core.setFailed(error.message);
 }
-
-run()
