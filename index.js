@@ -23,8 +23,7 @@ async function run() {
         }
       });
       await exec.exec(dmenvBinPath, ["--version"]);
-        console.log(`dmenv version is ${dmenvVersion}`);
-      await tc.cacheFile(dmenvBinPath, 'dmenv', 'dmenv', dmenvVersion);
+      //await tc.cacheFile(dmenvBinPath, 'dmenv', 'dmenv', dmenvVersion);
     }
   } catch (error) {
     core.setFailed(error.message);
