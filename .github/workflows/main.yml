@@ -3,7 +3,7 @@ name: check self
 on: [push]
 
 jobs:
-  install_demo:
+  run_demo_tests:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -22,7 +22,7 @@ jobs:
         with:
           dmenv-version: 0.20.0
 
-      - name: Run demo test
+      - name: Run demo tests
         run: |
           dmenv install
           dmenv run pytest
