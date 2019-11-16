@@ -92,7 +92,12 @@ async function run() {
         }
       });
       await exec.exec(dmenvBinPath, ["--version"]);
-      await tc.cacheFile(dmenvBinPath, 'dmenv', 'dmenv', dmenvVersion);
+
+      // Don't trust debian-based distros with Python packaging
+      const getPipPath = await tc.downloadTool("https://bootstrap.pypa.io/get-pip.py");
+      await exec.exec("python", [getPipPath, "--user"]);
+      await exec.exec("python", ["-m", "pip", "install", "virtualenv", "--user"]);
+      core.exportVariable('DMENV_NO_VENV_STDLIB', '1');
     }
   } catch (error) {
     console.log('error', error);
