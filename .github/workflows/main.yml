@@ -21,7 +21,9 @@ jobs:
       - uses: ./
         with:
           dmenv-version: 0.20.0
-      - run: |
+
+      - name: Run demo test
+        run: |
           dmenv install
-          dmenv run foo.py
+          dmenv run pytest
 

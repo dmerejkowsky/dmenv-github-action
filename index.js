@@ -20,7 +20,7 @@ async function installLinux (version) {
 
 async function installDarwin (version) {
   const dmenvDlPath = await tc.downloadTool(`https://github.com/TankerHQ/dmenv/releases/download/v${version}/dmenv-osx`)
-  installToLocalBin(dmenvDlPath)
+  await installToLocalBin(dmenvDlPath)
 }
 
 async function installWindows (version) {
@@ -55,7 +55,7 @@ const installs = {
 async function installDmenv () {
   const dmenvVersion = core.getInput('dmenv-version')
   console.log(`Installing dmenv version ${dmenvVersion}`)
-  await installs[process.platform]()
+  await installs[process.platform](dmenvVersion)
 }
 
 async function run () {
