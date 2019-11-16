@@ -26,6 +26,7 @@ async function run() {
       //await tc.cacheFile(dmenvBinPath, 'dmenv', 'dmenv', dmenvVersion);
     }
   } catch (error) {
+    console.log('error', error);
     core.setFailed(error.message);
   }
 }
