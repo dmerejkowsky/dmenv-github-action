@@ -8,3 +8,5 @@ jobs:
       - uses: ./
         with:
           dmenv-version: 0.20.0
+      - run: |
+          dmenv install

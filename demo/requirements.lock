@@ -1,0 +1,6 @@
+# Generated with dmenv 0.20.0, python 3.8.0, on Linux
+arrow==0.15.4
+pip==19.3.1
+python-dateutil==2.8.1
+setuptools==41.2.0
+six==1.13.0
