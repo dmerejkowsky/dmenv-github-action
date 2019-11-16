@@ -1,10 +1,12 @@
 name: dmenv
 author: Dimitri Merejkowsky
 description: Simplify usage of dmenv for CI of Python projects
+
 inputs:
   dmenv-version:
     escription: "dmenv version"
     required: true
-  run:
-    using: 'node12'
-    main: 'main.js'
+
+runs:
+  using: 'node12'
+  main: 'main.js'
