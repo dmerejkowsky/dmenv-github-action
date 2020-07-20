@@ -1,3 +1,5 @@
+_Note: since dmenv is no longer maintained, this project has been archived to. If you're looking for a dmenv alternative, please take a look at poetry_
+
 # Use dmenv in GitHub Actions
 
 This action installs and configure [dmenv](https://github.com/tankerhq/dmenv) for use in your Python projects.
